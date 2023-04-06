@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Style Transfer</title>
+</head>
+<body>
+    <h1>Webcam Style Transfer</h1>
+    <video id="video_feed" autoplay="true"></video>
+    <script>
+        var video = document.getElementById('video_feed');
+        var source = new EventSource("/video_feed");
+        source.onmessage = function(event) {
+            video.src = "data:image/jpeg;base64," + event.data;
+        };
+    </script>
+</body>
+</html>

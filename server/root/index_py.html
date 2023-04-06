@@ -1,0 +1,67 @@
+<!-- 원본 코드 : https://itadventure.tistory.com/561 -->
+<!DOCTYPE html>
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> 
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script> 
+    <py-env>
+    - matplotlib
+    - opencv-python
+    - numpy
+    - paths:
+      - 01.mp4
+    </py-env>
+    <py-config>
+      - autoclose_loader: true
+      - runtimes:
+        -
+          src: "https://cdn.jsdelivr.net/pyodide/dev/full/pyodide.js"
+          name: pyodide-0.20
+          lang: python
+    </py-config>
+  </head>
+  <body> 
+    <link rel="stylesheet" href="pytable.css"/>
+    <div id="frameNo"></div>
+    <div id="graph"></div>
+    <div id="output"></div>
+<py-script>
+import matplotlib.pyplot as plt
+import cv2
+from js import document, setInterval
+from pyodide.ffi import create_proxy
+import gc
+import numpy as np
+
+
+캡쳐 = cv2.VideoCapture('01.mp4')
+net = cv2.dnn.readNetFromTorch('models/eccv16/starry_night.t7')
+프레임번호 = 0
+
+def ShowFrame():
+  global 캡쳐, 그래프, cv2, plt, 프레임번호, document
+  캡쳐.set(cv2.CAP_PROP_POS_FRAMES, 프레임번호) # 동영상의 총 프레임 수 받아오기
+  
+  ret, frame = 캡쳐.read() # 두 개의 값을 반환하므로 두 변수 지정
+
+  그래프 = plt.figure(figsize=(8, 6))
+  plt.axis('off')
+  ax = plt.gca()
+  ax.margins(x=0, y=0)
+  그래프.tight_layout()
+
+  plt.imshow(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+  pyscript.write('graph', 그래프)
+  
+  plt.close(그래프)
+  document.getElementById('frameNo').innerHTML=프레임번호
+  프레임번호=프레임번호+15
+  gc.collect()
+
+setInterval(create_proxy(ShowFrame), 500)  # 특정 시간마다 함수 반복
+</py-script> 
+  </body> 
+</html>

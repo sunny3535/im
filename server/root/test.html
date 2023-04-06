@@ -1,0 +1,463 @@
+
+<!Doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>메인 - boostcamp</title>
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, width=device-width, target-densitydpi=medium-dpi">
+    <meta property="og:title" content="부스트캠프" />
+    <meta property="og:url" content="http://boostcamp.connect.or.kr/" />
+    <meta property="og:image" content="http://boostcamp.connect.or.kr/images/boost_og_image.png" />
+    <meta property="og:description" content="개발자의 지속 가능한 성장을 위한 학습 커뮤니티" />
+    <meta name="description" content="개발자의 지속 가능한 성장을 위한 학습 커뮤니티">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="부스트캠프" />
+    <meta name="twitter:url" content="http://boostcamp.connect.or.kr/" />
+    <meta name="twitter:image" content="http://boostcamp.connect.or.kr/images/boost_og_image.png" />
+    <meta name="twitter:description" content="개발자의 지속 가능한 성장을 위한 학습 커뮤니티" />
+    <link rel="icon" href="http://boostcamp.connect.or.kr/images/pavicon_16_v2.ico" sizes="16x16" />
+    <link rel="icon" href="http://boostcamp.connect.or.kr/images/pavicon_32_v2.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/pavicon_180_v2.ico" sizes="180x180" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/new.common.js?_=1677058405"></script>
+    <script type="text/javascript" src="js/header.blur.js?_=1677058405"></script>
+    <link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static/dm/boostcamp/css/boostcamp_221201.css">
+    <link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static/dm/boostcamp/css/interaction_220620.css">
+    <link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static/dm/boostcamp/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static/dm/boostcamp/css/slick.css">
+    <!-- Global site tag (gtag.js) - Google Ads: 10901232120 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10901232120"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'AW-10901232120');
+	</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KT7PJ27');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+         fbq('init', '560958915874318'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" 
+    src="https://www.facebook.com/tr?id=560958915874318&ev=PageView
+    &noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body class="main">
+    <div class="wrap">
+        <div id="skipNav">
+            <ul>
+                <li><a href="#container"><span class="blind">본문바로가기</span></a></li>
+                <li><a href="#snMenu"><span class="blind">주메뉴 바로가기</span></a></li>
+            </ul>
+        </div>
+        <!-- [d] 스크롤 진행시 type_blur 클래스 추가-->
+        <header class="header">
+            <div class="blur_box"></div>
+            <div class="header_inner">
+                <h1><a href="/"><span class="blind">boostcamp</span></a></h1>
+                <nav id="snMenu">
+                    <button type="button" id="btnOpenMenu" class="list_button">
+                        <span>
+                            <em class="blind">메뉴 펼치기</em>
+                        </span>
+                    </button>
+                    <!-- [D] 메뉴 펼치키 링크가 눌리면 active 클래스 추가 -->
+                    <div class="list_box" id="toggleMenu">
+                        <ul role="tablist">
+                            <li role="tab" class="list" aria-selected="false"><a href="/about.html">About</a></li>
+                            <li role="tab" class="list" aria-selected="false">
+                                <!-- <a href="/guide_ai.html">AI Tech</a> -->
+                                <a href="/program_ai.html">AI Tech <i class="ico_select"><span class="blind">펼쳐보기</span></i></a>
+                                <ul class="sub" role="tablist" aria-expanded="false">
+                                    <li role="tab"><a href="/program_ai.html">프로그램</a></li>
+                                    <li role="tab"><a href="/guide_ai.html">모집안내</a></li>
+                                    <li role="tab"><a href="/review_ai.html">수료생 후기</a></li>
+                                </ul>
+                            </li>
+                            <li role="tab" class="list" aria-selected="false">
+                                <a href="/program_wm.html">Web·Mobile <i class="ico_select"><span class="blind">펼쳐보기</span></i></a>
+                                <ul class="sub" role="tablist" aria-expanded="false">
+                                    <li role="tab"><a href="/program_wm.html">프로그램</a></li>
+                                    <li role="tab"><a href="/guide_wm.html">모집안내</a></li>
+                                    <li role="tab"><a href="/review_wm.html">수료생 후기</a></li>
+                                </ul>
+                            </li>
+                            <li role="tab" class="list" aria-selected="false">
+                                <a href="/partner_contributor.html">Contributor <i class="ico_select"><span class="blind">펼쳐보기</span></i></a>
+                                <ul class="sub" role="tablist" aria-expanded="false">
+                                    <li role="tab"><a href="/partner_contributor.html">파트너 기업</a></li>
+                                    <li role="tab"><a href="/mentor_contributor.html">멘토 & 리뷰어</a></li>
+                                </ul>
+                            </li>
+                            <li role="tab" class="list" aria-selected="false"><a href="/faq.html">FAQ</a></li>
+                        </ul>
+                        <a href="https://apply.connect.or.kr/connect/apply" target="_blank" title="새창열림" class="btn_app">지원하기</a>
+                        <!-- [D] 레이어 링크가 눌리면 list_box 클래스의 active 클래스 추가 -->
+                        <button type="button" id="btnCloseMenu" class="btn_close">
+                            <span class="blind">레이어 닫기</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="mainCarousel" class="container flicking-viewport vertical">
+            <div class="content flicking-camera">
+                <section class="main_spot panel">
+                    <div class="spot_bg" style="filter: blur(0px); position: fixed;">
+                        <video autoplay="" muted="" playsinline="" loop="">
+                            <source src="https://ssl.pstatic.net/static/dm/boostcamp/video/boostcamp_main_vedio.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div id="fixedCarousel" class="flicking-viewport vertical">
+                        <div class="flicking-camera">
+                            <div class="section_list panel">
+                                <ul>
+                                    <li class="list_item">
+                                        <h2 class="spot_title">개발자의 <br class="mo_br">지속 가능한 <br class="mo_br tb_br">성장을 위한 <br class="pc_br mo_br">학습 커뮤니티</h2>
+                                    </li>
+                                    <li class="list_item">
+                                        <h2 class="spot_title">성장하는<br class="mo_br"> 사람들을 위한 <br>베이스캠프</h2>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="section_slogan panel">
+                                <ul>
+                                    <li>
+                                        <div class="list_item">
+                                            <h3 class="section_title">최고의 동료들과<br class="mo_br"> 함께<br class="tb_br"> 다양한 문제를<br class="mo_br"> 해결하고</h3>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="list_item">
+                                            <h3 class="section_title">세상에 긍정적인<br class="tb_br mo_br"> 변화를 만들며<br class="mo_br pc_br"> 성장하고 싶은 <br class="tb_br mo_br">사람들을 찾습니다.</h3>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="dimmed"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section_explanation panel">
+                    <div class="section_list slide">
+                        <h3 class="section_title">부스트캠프는<br> 개발자의 지속 가능한<br class="mo_br"> 성장을 위한<br class="pc_br tb_br"> 학습<br class="mo_br"> 커뮤니티입니다.</h3>
+                        <a href="/about.html" role="button" class="btn_normal"><i class="ico_detail"></i><span class="inner_txt">부스트캠프 소개</span></a>
+                        <ul class="question_list">
+                            <!-- [D] exapand 클래스 추가 후 0.5초후 move 클래스 추가 -->
+                            <li class="q1">
+                                <span class="question_mark">Q.</span>
+                                <strong class="question_txt">지속적으로 성장하는<br> 개발자가 될 수 있을까?</strong>
+                            </li>
+                            <li class="q2">
+                                <span class="question_mark">Q.</span>
+                                <strong class="question_txt">세상에 긍정적인 변화를<br> 만드는 사람이 될 수 있을까?</strong>
+                            </li>
+                            <li class="q3">
+                                <span class="question_mark">Q.</span>
+                                <strong class="question_txt">AI 개발은 어디부터 시작해야<br> 되는 걸까?</strong>
+                            </li>
+                            <li class="q4">
+                                <span class="question_mark">Q.</span>
+                                <strong class="question_txt">웹모바일 실무는 어떤식으로<br> 이루어질까?</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section id="introCarousel" class="section_intro panel">
+                    <div class="slide">
+                        <h3 class="section_title">부스트캠프의 <br>프로그램을 소개합니다.</h3>
+                        <ul class="intro_list">
+                            <li>
+                                <div class="item_area">
+                                    <div class="img_box">
+                                        <img src="https://ssl.pstatic.net/static/dm/boostcamp/img/home/img-aitech@2x.png" width="600" height="600" alt="임시이미지">
+                                    </div>
+                                    <div class="txt_box">
+                                        <div class="box_inner">
+                                            <strong class="item_title">AI Tech</strong>
+                                            <p class="item_txt">인공지능과 딥러닝을 어떻게 활용해야 하는지<br> 명확히 알고 서비스에 적용해 볼 수 있도록<br> AI Production의 End-to-End를 경험합니다.</p>
+                                            <a href="/program_ai.html" role="button" class="btn_text c_black"><i class="ico_detail"></i><span class="inner_txt">자세히 보기</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_area">
+
+                                    <div class="txt_box">
+                                        <div class="box_inner">
+                                            <strong class="item_title">Web&middot;Mobile</strong>
+                                            <p class="item_txt">프로젝트 기반 동료학습을 바탕으로, <br>좋은 습관을 가진 Web, iOS, Android <br>개발자로 성장합니다.</p>
+                                            <a href="/program_wm.html" role="button" class="btn_text c_black"><i class="ico_detail"></i><span class="inner_txt">자세히 보기</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="img_box">
+                                        <img src="https://ssl.pstatic.net/static/dm/boostcamp/img/home/img-webmobile@2x.png" width="600" height="600" alt="임시이미지">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="intro_footer">
+                            <div class="section_keyword">
+                                <strong class="section_title">
+                                    <span class="blind">Open, Growth, Passionate, Exellent"</span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="reviewCarousel" class="section_review panel">
+                    <div class="slide">
+                        <h3 class="section_title">부스트캠프와 함께<br> 성장해보세요.</h3>
+                        <ul class="review_list">
+                            <li>
+                                <div class="item_area">
+                                    <div class="img_box">
+                                        <img src="https://ssl.pstatic.net/static/dm/boostcamp/img/home/img-review-1@2x.png" width="604" height="453" alt="임시이미지">
+                                    </div>
+                                    <div class="txt_box">
+                                        <strong class="item_title">“부스트캠프에는 왜 <br>최고의 동료들이 모이는 걸까?”</strong>
+                                        <div class="item_info">
+                                            <span class="info_name">이종혁</span>
+                                            <span class="info_profile">부스트캠프 AI Tech 수료생 & 멘토</span>
+                                        </div>
+                                        <a href="https://youtu.be/-D_H4HL8DhA" role="button" class="btn_text c_black" target="_blank"><i class="ico_detail"></i><span class="inner_txt">자세히 보기</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_area">
+                                    <div class="img_box">
+                                        <img src="https://ssl.pstatic.net/static/dm/boostcamp/img/home/img-review-2@2x.png" width="604" height="453" alt="임시이미지">
+                                    </div>
+                                    <div class="txt_box">
+                                        <strong class="item_title">“지속 가능한 개발자가 <br>되기 위한 노력”</strong>
+                                        <div class="item_info">
+                                            <span class="info_name">서보현</span>
+                                            <span class="info_profile">부스트캠프 웹&middot;모바일 수료생</span>
+                                        </div>
+                                        <a href="https://www.youtube.com/watch?v=K0bpwnYxgAY" role="button" class="btn_text c_black" target="_blank"><i class="ico_detail"></i><span class="inner_txt">자세히 보기</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_area">
+                                    <div class="img_box">
+                                        <img src="https://ssl.pstatic.net/static/dm/boostcamp/img/home/img-review-3@2x.png" width="604" height="453" alt="임시이미지">
+                                    </div>
+                                    <div class="txt_box">
+                                        <strong class="item_title">“낯선 환경에서의 학습 방식, <br>적응할 수 있을까?”</strong>
+                                        <div class="item_info">
+                                            <span class="info_name">김민지</span>
+                                            <span class="info_profile">부스트캠프 웹&middot;모바일 수료생</span>
+                                        </div>
+                                        <a href="https://youtu.be/5dWoZ18MV2U" role="button" class="btn_text c_black" target="_blank"><i class="ico_detail"></i><span class="inner_txt">자세히 보기</span></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 푸터 -->
+                        <footer class="footer">
+                            <div class="btn_top_area">
+                                <a href="" role="button" class="btn_top" title="최상단 바로가기"><span class="inner_txt">Top</span><span class="blind">최상단 바로가기 버튼</span><i class="ico_up_arrow"></i></a>
+                            </div>
+                            <div class="footer_inner">
+                                <div class="contact_area">
+                                    <strong class="area_title">Contact</strong>
+                                    <ul>
+                                        <li>
+                                            <span class="item_title">AI Tech : </span>
+                                            <span class="item_info"><a href="#" target="_blank" style="cursor: default; pointer-events: none">boostcamp_ai@connect.or.kr</a></span>
+                                        </li>
+                                        <li>
+                                            <span class="item_title">Web·Mobile : </span>
+                                            <span class="item_info"> <a href="#" target="_blank" style="cursor: default; pointer-events: none">boostcamp_wm@connect.or.kr</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="information_area">
+                                    <strong class="area_title">Become a Contributor</strong>
+                                    <ul>
+                                        <li>
+                                            <span class="item_title">Partnerships : </span>
+                                            <span class="item_info"><a href="https://naver.me/54J1DBpX" target="_blank">AI Tech <i class="ico_outlink"></i></a></span>
+                                            <span class="item_info"><a href="https://naver.me/Ixbe5Bp0" target="_blank">Web&middot;Mobile <i class="ico_outlink"></i></a></span>
+                                        </li>
+                                        <li>
+                                            <span class="item_info"><a href="https://naver.me/FijIeUeS" target="_blank">Mentor & Reviewer <i class="ico_outlink"></i></a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="sns_area">
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/boostcamp.official" target="_blank"><i class="ico_sns_facebook"><span class="blind">Facebook</span></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/boostcamp.connect/" target="_blank"><i class="ico_sns_instagram"><span class="blind">Instagram</span></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://blog.naver.com/boostcamp_official" target="_blank"><i class="ico_sns_naver"><span class="blind">>Naver</span></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="copyright_area">
+                                    <address class="addr"><a href="https://www.connect.or.kr/" target="_blank">ⓒ NAVER Connect Foundation.</a></address>
+                                </div>
+                            </div>
+                        </footer>
+                        <!--/ 푸터 -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- 일정 카운트 팝업 -->
+    <div class="ly_popup recruit_count" aria-hidden="true">
+        <div class="popup_content">
+            <section class="section_recruit_count">
+                <h3 class="section_title"><em>AI Tech</em> 5기 모집 마감까지</h3>
+                <div class="count_area">
+                    <div class="count_info">
+                        <div class="count_box">
+                            <strong class="count_num type_day" data-count-day>00</strong>
+                        </div>
+                        <span class="count_name">DAYS</span>
+                    </div>
+                    <div class="count_info">
+                        <div class="count_box">
+                            <strong class="count_num type_hour" data-count-hour>00</strong>
+                        </div>
+                        <span class="count_name">HOURS</span>
+                    </div>
+                    <div class="count_info">
+                        <div class="count_box">
+                            <strong class="count_num type_minute" data-count-min>00</strong>
+                        </div>
+                        <span class="count_name">MINUTES</span>
+                    </div>
+                    <div class="count_info">
+                        <div class="count_box">
+                            <strong class="count_num type_second" data-count-sec>00</strong>
+                        </div>
+                        <span class="count_name">SECONDS</span>
+                    </div>
+
+                </div>
+                <a href="https://bit.ly/boostcamp_aitech5_regi" role="button" class="btn_normal c_white" target="_blank"><span class="inner_txt">바로 지원하기</span><i class="ico_arrow_right"></i></a>
+            </section>
+        </div>
+        <button type="button" class="btn_circle_close"><span class="blind">팝업 닫기</span></button>
+    </div>
+    <!--// 일정 카운트 팝업 -->
+    <!-- [D] 팝업 노출시 type_blur 클래스 추가해주세요 -->
+    <div class="dimmed type_blur"></div>
+
+    <!-- slick 제어 -->
+    <script src="https://ssl.pstatic.net/static/dm/boostcamp/js/slick.js"></script>
+    <script>
+        $('.section_review .review_list').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            arrows : true, 
+            prevArrow: '<a href="" role="button" class="btn_prev"><span class="blind">이전</span></a>',
+            nextArrow: '<a href="" role="button" class="btn_next"><span class="blind">다음</span></a>',
+        });
+    </script>
+
+    <script src="./js/interaction.js?2022062001"></script>
+    <script type="text/javascript">
+        init({ type: 'main' });
+    </script>
+    <script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+    <script type="text/javascript">
+        if(!wcs_add) var wcs_add = {};
+            wcs_add["wa"] = "2d10d236861d7";
+            if(window.wcs) {
+            wcs_do();
+        }
+    </script>
+    <script type="text/javascript">
+        $(window).resize(function () {
+            var width = $(window).width();
+            if (width < 768) {
+                $(".dimmed").addClass("type_blur");
+                $(".dimmed").css('display', 'block');
+            } else {
+                $(".dimmed").removeClass("type_blur");
+                $(".dimmed").css('display', 'none');
+            }
+        });
+        $('.ly_popup.recruit_count .btn_circle_close').on('click', function (e) { 
+            e.preventDefault();	
+            $(this).parent().attr('aria-hidden', 'true');
+            if(matchMedia("screen and (max-width:768px)").matches){
+                $(".dimmed").removeClass("type_blur");
+                $(".dimmed").css('display', 'none')
+            }
+        });
+    </script>
+    <script>
+        function renderTimeDiff(diff) {
+            var diffDay = Math.floor(diff / (1000*60*60*24));
+            var diffHour = Math.floor((diff / (1000*60*60)) % 24);
+            var diffMin = Math.floor((diff / (1000*60)) % 60);
+            var diffSec = Math.floor(diff / 1000 % 60);
+
+            $("[data-count-day]").text(String(diffDay).padStart(2, "0"));
+            $("[data-count-left-day]").text("D-" + String(diffDay));
+            $("[data-count-hour]").text(String(diffHour).padStart(2, "0"));
+            $("[data-count-min]").text(String(diffMin).padStart(2, "0"));
+            $("[data-count-sec]").text(String(diffSec).padStart(2, "0"));
+        }
+
+        var masTime = new Date("2023/01/09 18:00");
+        var todayTime = new Date();
+
+        var diff = masTime - todayTime;
+        if (diff > 0) {
+            renderTimeDiff(diff);
+            setInterval(function() {
+                var diff = masTime - new Date();
+                renderTimeDiff(diff);
+            }, 1000);
+        } else {
+            $(".section_recruit_count").addClass("type_blur");
+            $(".section_deadline").css("display", "block");
+            $('.section_deadline .scroll_down').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $("#section_recruitinfo").offset().top
+            }, 1000);
+        });
+        }
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT7PJ27"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
