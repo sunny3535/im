@@ -38,7 +38,7 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
-
+   
 
 # predictor = dlib.shape_predictor('models/shape_predictor_5_face_landmarks.dat')
 
