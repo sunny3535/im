@@ -1,56 +1,51 @@
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-from tensorflow.keras.models import load_model
 import numpy as np
 import cv2
 
 facenet = cv2.dnn.readNet('models/deploy.prototxt', 'models/res10_300x300_ssd_iter_140000.caffemodel')
-model = load_model('models/mask_detector.model')
+gender_net = cv2.dnn.readNetFromCaffe('models/deploy_gender.prototxt', 'models/gender_net.caffemodel')
+age_net = cv2.dnn.readNetFromCaffe('models/deploy_age.prototxt', 'models/age_net.caffemodel')
 
-cap = cv2.VideoCapture('videos/mask.mp4')
-# cap = cv2.VideoCapture(0)
+gender_list = ['Male', 'Female']
+age_list = ['(0, 2)','(4, 6)','(8, 12)','(15, 20)','(25, 32)','(38, 43)','(48, 53)','(60, 100)']
 
-while True:
-    ret, img = cap.read()
+img = cv2.imread('imgs/sunny.jpg')
 
-    if ret == False:
-        break
+h, w, c = img.shape
+img = cv2.resize(img, dsize=(500, int(h / w * 500)))
+h, w, c = img.shape
 
-    h, w, c = img.shape
+blob = cv2.dnn.blobFromImage(img, size=(300, 300), mean=(104., 177., 123.))
 
-    blob = cv2.dnn.blobFromImage(img, size=(300, 300), mean=(104., 177., 123.))
-    facenet.setInput(blob)
-    dets = facenet.forward()
+facenet.setInput(blob)
+dets = facenet.forward()
 
-    for i in range(dets.shape[2]):
-        confidence = dets[0, 0, i, 2]
+for i in range(dets.shape[2]):
+    confidence = dets[0, 0, i, 2]
 
-        if confidence < 0.5:
-            continue
+    if confidence < 0.5:
+        continue
 
-        x1 = int(dets[0, 0, i, 3] * w)
-        y1 = int(dets[0, 0, i, 4] * h)
-        x2 = int(dets[0, 0, i, 5] * w)
-        y2 = int(dets[0, 0, i, 6] * h)
+    x1 = int(dets[0, 0, i, 3] * w)
+    y1 = int(dets[0, 0, i, 4] * h)
+    x2 = int(dets[0, 0, i, 5] * w)
+    y2 = int(dets[0, 0, i, 6] * h)
 
-        face = img[y1:y2, x1:x2]
+    face = img[y1:y2, x1:x2]
 
-        face_input = cv2.resize(face, dsize=(224, 224))
-        face_input = cv2.cvtColor(face_input, cv2.COLOR_BGR2RGB)
-        face_input = preprocess_input(face_input)
-        face_input = np.expand_dims(face_input, axis=0)
+    blob = cv2.dnn.blobFromImage(face, size=(227, 227), mean=(78.4263377603, 87.7689143744, 114.895847746))
 
-        mask, nomask = model.predict(face_input).squeeze()
+    gender_net.setInput(blob)
+    gender_index = gender_net.forward().squeeze().argmax()
+    gender = gender_list[gender_index]
 
-        if mask > nomask:
-            color = (0, 255, 0)
-            label = 'Mask %d%%' % (mask * 100)
-        else:
-            color = (0, 0, 255)
-            label = 'No Mask %d%%' % (nomask * 100)
+    age_net.setInput(blob)
+    age_index = age_net.forward().squeeze().argmax()
+    age = age_list[age_index]
+    
+    cv2.putText(img, text='%s, %s' % (gender, age), org=(x1, y1), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 255, 0), thickness=2)
+    cv2.rectangle(img, pt1=(x1, y1), pt2=(x2, y2), color=(255, 0, 0), thickness=2)
 
-        cv2.rectangle(img, pt1=(x1, y1), pt2=(x2, y2), thickness=2, color=color)
-        cv2.putText(img, text=label, org=(x1, y1 - 10), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=color, thickness=2)
+cv2.imshow('result', img)
+cv2.waitKey(0)
 
-    cv2.imshow('result', img)
-    if cv2.waitKey(1) == ord('q'):
-        break
+
