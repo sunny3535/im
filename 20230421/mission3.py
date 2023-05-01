@@ -8,7 +8,7 @@ cap = cv2.VideoCapture(0)
 sticker_img = cv2.imread('imgs/nose03.png', cv2.IMREAD_UNCHANGED)
 sticker_img2 = cv2.imread('imgs/eye06.png', cv2.IMREAD_UNCHANGED)
 sticker_img3 = cv2.imread('imgs/mouth13.png', cv2.IMREAD_UNCHANGED)
-sticker_img4 = cv2.imread('imgs/flower.png', cv2.IMREAD_UNCHANGED)
+sticker_img4 = cv2.imread('imgs/leaf.png', cv2.IMREAD_UNCHANGED)
 
 while True:
     ret, img = cap.read()
