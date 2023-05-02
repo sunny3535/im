@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-proto = 'models/colorization_deploy_v2.prototxt.txt'
+proto = 'models/colorization_deploy_v2.prototxt'
 weights = 'models/colorization_release_v2.caffemodel'
 
 net = cv2.dnn.readNetFromCaffe(proto, weights)

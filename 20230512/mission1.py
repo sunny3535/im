@@ -1,19 +1,16 @@
-# https://www.pexels.com/ko-kr/search/grayscale/ 흑백 이미지
-
-# https://www.seoul.co.kr/news/newsView.php?id=20230228500133 한국의 독립운동가 사진
-
 import cv2
 import numpy as np
 
 proto = 'models/colorization_deploy_v2.prototxt'
 weights = 'models/colorization_release_v2.caffemodel'
 net = cv2.dnn.readNetFromCaffe(proto, weights)
+
 pts_in_hull = np.load('models/pts_in_hull.npy')
 pts_in_hull = pts_in_hull.transpose().reshape(2, 313, 1, 1).astype(np.float32)
 net.getLayer(net.getLayerId('class8_ab')).blobs = [pts_in_hull]
 net.getLayer(net.getLayerId('conv8_313_rh')).blobs = [np.full((1, 313), 2.606, np.float32)]
 
-img = cv2.imread('imgs/흑백이미지.jpg')
+img = cv2.imread('imgs/k04.jpg')
 h, w, c = img.shape
 img_input = img.copy()
 img_input = img_input.astype('float32') / 255.
