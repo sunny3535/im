@@ -1,5 +1,3 @@
-# https://www.pexels.com/ko-kr/search/videos/grayscale/ 흑백동영상
-
 import cv2
 import numpy as np
 
@@ -11,10 +9,9 @@ net = cv2.dnn.readNetFromCaffe(proto, weights)
 pts_in_hull = np.load('models/pts_in_hull.npy')
 pts_in_hull = pts_in_hull.transpose().reshape(2, 313, 1, 1).astype(np.float32)
 net.getLayer(net.getLayerId('class8_ab')).blobs = [pts_in_hull]
-
 net.getLayer(net.getLayerId('conv8_313_rh')).blobs = [np.full((1, 313), 2.606, np.float32)]
 
-cap = cv2.VideoCapture('imgs/01.mp4')
+cap = cv2.VideoCapture('videos/04.mp4')
 
 while True:
     ret, img = cap.read()
@@ -46,6 +43,9 @@ while True:
     output_bgr = np.clip(output_bgr, 0, 255)
     output_bgr = output_bgr.astype('uint8')
 
+    img = cv2.resize(img, (int(w/3), int(h/3)))
+    output_bgr = cv2.resize(output_bgr, (int(w/3), int(h/3)))
+    
     cv2.imshow('img', img)
     cv2.imshow('output', output_bgr)
 
