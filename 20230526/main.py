@@ -1,67 +1,83 @@
-import pandas as pd
+from tensorflow.keras.datasets import mnist
 
-train_df = pd.read_csv("data/asl_data/sign_mnist_train.csv")
-valid_df = pd.read_csv("data/asl_data/sign_mnist_valid.csv")
+(x_train, y_train), (x_valid, y_valid) = mnist.load_data()
 
-train_df.head()
+print(x_train.shape)
+print(x_valid.shape)
+print(x_train.dtype)
+print(x_train.min())
+print(x_train.max())
 
-y_train = train_df['label']
-y_valid = valid_df['label']
-del train_df['label']
-del valid_df['label']
+import numpy as np
+np.set_printoptions(linewidth=np.inf) 
 
-x_train = train_df.values
-x_valid = valid_df.values
+print(x_train[1])
 
-x_train.shape
-
-y_train.shape
-
-x_valid.shape
-
-y_valid.shape
 
 import matplotlib.pyplot as plt
-plt.figure(figsize=(40,40))
 
-num_images = 20
-for i in range(num_images):
-    row = x_train[i]
-    label = y_train[i]
-    
-    image = row.reshape(28,28)
-    plt.subplot(1, num_images, i+1)
-    plt.title(label, fontdict={'fontsize': 30})
-    plt.axis('off')
-    plt.imshow(image, cmap='gray')
-    
-x_train.min()
-x_train.max()
+image = x_train[0]
+plt.imshow(image, cmap='gray')
 
-# TODO: Normalize x_train and x_valid.
+
+print(y_train[0])
+
+x_train = x_train.reshape(60000, 784)
+x_valid = x_valid.reshape(10000, 784)
+
+print(x_train.shape)
+print(x_train[0])
+
 x_train = x_train / 255
-x_valid = x_valid / 255
+x_valid = x_valid / 255 
+
+print(x_train.dtype)
+
+print(x_train.min())
+
+print(x_train.max())
+
+
 
 import tensorflow.keras as keras
-num_classes = 24
+num_categories = 10
 
-# TODO: Categorically encode y_train and y_valid.
-y_train = keras.utils.to_categorical(y_train, num_classes)
-y_valid = keras.utils.to_categorical(y_valid, num_classes)
-    
+y_train = keras.utils.to_categorical(y_train, num_categories)
+y_valid = keras.utils.to_categorical(y_valid, num_categories)
+
+print(y_train[0:9])
 
 from tensorflow.keras.models import Sequential
+
+model = Sequential()
+
 from tensorflow.keras.layers import Dense
 
-# TODO: build a model following the guidelines above.
-model = Sequential()
 model.add(Dense(units=512, activation='relu', input_shape=(784,)))
-model.add(Dense(units=512, activation='relu'))
-model.add(Dense(units=num_classes, activation='softmax'))
-
+model.add(Dense(units = 512, activation='relu'))
+model.add(Dense(units = 10, activation='softmax'))
 model.summary()
 
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
 
-# TODO: Train the model for 20 epochs.
-model.fit(x_train, y_train, epochs=20, verbose=1, validation_data=(x_valid, y_valid))
+history = model.fit(
+    x_train, y_train, epochs=5, verbose=1, validation_data=(x_valid, y_valid)
+)
+
+import numpy as np
+from numpy.polynomial.polynomial import polyfit
+import matplotlib.pyplot as plt
+
+m = -2  # -2 to start, change me please
+b = 40  # 40 to start, change me please
+
+# Sample data
+x = np.array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9])
+y = np.array([10, 20, 25, 30, 40, 45, 40, 50, 60, 55])
+y_hat = x * m + b
+
+plt.plot(x, y, '.')
+plt.plot(x, y_hat, '-')
+plt.show()
+
+print("Loss:", np.sum((y - y_hat)**2)/len(x))
