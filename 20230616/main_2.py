@@ -1,5 +1,7 @@
+import tensorflow.keras as keras
 import pandas as pd
 
+# Load in our data from CSV files
 train_df = pd.read_csv("data/asl_data/sign_mnist_train.csv")
 valid_df = pd.read_csv("data/asl_data/sign_mnist_valid.csv")
 
@@ -48,7 +50,6 @@ num_classes = 24
 # TODO: Categorically encode y_train and y_valid.
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_valid = keras.utils.to_categorical(y_valid, num_classes)
-    
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
@@ -65,3 +66,4 @@ model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
 
 # TODO: Train the model for 20 epochs.
 model.fit(x_train, y_train, epochs=20, verbose=1, validation_data=(x_valid, y_valid))
+
